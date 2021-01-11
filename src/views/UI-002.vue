@@ -1,13 +1,33 @@
 <template>
-  <div class="container"></div>
+  <div class="flex-center">
+    <div class="lightOn">
+     <img class="src[currentSrc]"> 
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-
+data () {
+  return {
+    src: ['../assets/lightOff.png', '../assets/lightOn.png'],
+    currentSrc: 0
+  }
 }
+
+methods:{
+   changeImage(){
+        if(currentSrc < src.length-1){
+            currentSrc ++
+    }else{
+           currentSrc = 0
+    }
+}
+
 </script>
 
-<style>
-
+<style scoped>
+  img{
+    width: 300px;
+    height: auto;
+  }
 </style>
