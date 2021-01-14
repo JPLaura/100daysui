@@ -1,26 +1,34 @@
 <template>
   <div class="flex-center">
-    <div class="lightOn">
-     <img class="src[currentSrc]"> 
+    <div>
+      <img alt="" :src="getImgUrl(imageSource)" @click="changeImage()" /> 
     </div>
   </div>
 </template>
 
 <script>
-data () {
-  return {
-    src: ['../assets/lightOff.png', '../assets/lightOn.png'],
-    currentSrc: 0
-  }
-}
 
-methods:{
-   changeImage(){
-        if(currentSrc < src.length-1){
-            currentSrc ++
-    }else{
-           currentSrc = 0
+export default {
+  data() {
+    return {
+      imageSource: "lightOn"
     }
+  },
+  methods: {
+    getImgUrl(pet) {
+      var images = require.context('../assets/', false, /\.png$/)
+      return images('./' + pet + ".png")
+    },
+    changeImage() {
+     this.imageSource = "lightOff"
+     if this.imageSource = "lightOn" {
+       this.imageSource = "lightOff"
+     }
+        else {
+          this.imageSource = "ligtsOn"
+        }
+    }
+  }
 }
 
 </script>
